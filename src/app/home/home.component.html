@@ -1,0 +1,20 @@
+<div class="container">
+    <div *ngIf="postService.loading$| async">Loading....</div>
+    <ng-template #noResults>
+        <p class="message">
+            I am sorry. 😔 <br>
+            But it seems your search didn't return any results.
+            Might check for typos.
+        </p>
+    </ng-template>
+    <ng-container *ngIf="(postService.posts$ | async) as posts; else noResults">
+        Current Page: {{postService.currentPage}}
+        <app-post-overview *ngFor="let post of posts;"
+                           [post]="post.data"></app-post-overview>
+        <div class="page-controls">
+            <button (click)="prevPage();">< Prev</button>
+            |
+            <button (click)="nextPage();">Next ></button>
+        </div>
+    </ng-container>
+</div>

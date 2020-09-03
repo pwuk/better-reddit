@@ -1,0 +1,49 @@
+@import "../../../assets/styles/variables";
+
+
+.post-overview {
+  display: flex;
+  margin-bottom: $spacing-xl;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid rgb(237, 239, 241);
+  }
+
+  &__score {
+    font-size: $font-size-xl;
+    font-weight: bold;
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__thumb {
+    width: 100px;
+    min-width: 100px;
+    margin: 0 $spacing-sm;
+
+    img {
+      width: 100%;
+      min-height: 75px;
+      object-fit: cover;
+    }
+  }
+
+  &__description {
+
+    &-title {
+      font-size: $font-size-md;
+      font-family: $font-family-secondary;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    &-subtitle {
+      font-size: $font-size-sm;
+    }
+  }
+}
