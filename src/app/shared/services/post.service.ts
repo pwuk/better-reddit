@@ -25,6 +25,11 @@ export class PostService implements OnDestroy {
     }
 
     set query(value: string) {
+        // reset current tracking variables when the subreddit query changes
+        this.currentPage = 1;
+        this.tmpBefore = '';
+        this.tmpAfter = '';
+
         this._query$.next(value);
     }
 
@@ -67,11 +72,10 @@ export class PostService implements OnDestroy {
     }
 
     prevPage(): void {
-        if (this.currentPage === 0) {
+        if (this.currentPage === 1) {
             return;
         }
         this.currentPage--;
-
         // reset to remove it from the final query
         this.tmpAfter = '';
         this._before$.next(this.tmpBefore);
@@ -84,9 +88,13 @@ export class PostService implements OnDestroy {
             subreddit = 'r/' + subreddit;
         }
 
-        const limitParam = 'limit=' + limit + '&count=' + limit;
+        let limitParam = 'limit=' + limit;
         const afterParam = this.tmpAfter && after ? '&after=' + after : '';
         const beforeParam = this.tmpBefore && before ? '&before=' + before : '';
+
+        if (afterParam.length || beforeParam.length) {
+            limitParam += '&count=' + limit * this.currentPage;
+        }
 
         return this.http.get<any>(REDDIT_API + subreddit + '.json?' + limitParam + afterParam + beforeParam)
                    .pipe(

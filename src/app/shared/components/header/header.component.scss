@@ -8,14 +8,43 @@
   box-sizing: border-box;
   padding: $spacing-md;
 
+  .input-wrapper {
+    position: relative;
+
+    .icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: #878a8c;
+      width: 18px;
+      height: 18px;
+    }
+
+    .input {
+      height: 100%;
+    }
+  }
+
   .input {
-    background-color: rgb(246, 247, 248);
-    border-radius: 4px;
+    padding: 0 16px 0 40px;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .select {
+    border-radius: 0 4px 4px 0;
+
+  }
+
+  .input, .select {
+    background-color: #f6f8fa;
     border: 1px solid rgb(237, 239, 241);
     box-shadow: none;
     color: rgb(28, 28, 28);
     display: block;
-    padding: 0 16px 0 40px;
-    outline-color: rgb(222, 222, 222);
+    outline: none;
+    &:focus {
+      border-color: rgb(204, 204, 204);
+    }
   }
 }

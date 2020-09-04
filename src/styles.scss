@@ -4,8 +4,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
+// minor reset
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 body {
   font-family: 'Crimson Pro', serif;
   font-size: 1.25rem;
+  position: relative
 }

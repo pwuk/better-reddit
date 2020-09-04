@@ -6,6 +6,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -14,9 +15,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

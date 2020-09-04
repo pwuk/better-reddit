@@ -1,5 +1,10 @@
 <div class="container">
-    <div *ngIf="postService.loading$| async">Loading....</div>
+    <ng-container *ngIf="postService.loading$| async">
+        <div class="loading">
+            <p>Loading....</p>
+        </div>
+    </ng-container>
+
     <ng-template #noResults>
         <p class="message">
             I am sorry. 😔 <br>
@@ -9,8 +14,12 @@
     </ng-template>
     <ng-container *ngIf="(postService.posts$ | async) as posts; else noResults">
         Current Page: {{postService.currentPage}}
-        <app-post-overview *ngFor="let post of posts;"
-                           [post]="post.data"></app-post-overview>
+
+        <div class="masonry">
+            <app-post-overview *ngFor="let post of posts;" [post]="post.data"
+                               class="masonry-brick"></app-post-overview>
+        </div>
+
         <div class="page-controls">
             <button (click)="prevPage();">< Prev</button>
             |

@@ -1,13 +1,13 @@
-<div class="post-overview">
+<div [routerLink]="['post', post.id]" class="post-overview">
     <div class="post-overview__score">{{post.score}}</div>
     <div class="post-overview__thumb">
         <a [routerLink]="['post', post.id]">
-            <img *ngIf="post.thumbnail !== 'self'" [src]="post.thumbnail" alt="post image"/>
+            <img *ngIf="post.thumbnail.includes('thumbs')" [src]="post.thumbnail" alt="post image"/>
         </a>
     </div>
     <div class="post-overview__description">
         <div class="post-overview__description-title">
-            <a [routerLink]="['post', post.id]">{{post.title}}</a>
+            {{post.title}}
         </div>
         <div class="post-overview__description-subtitle">
             submitted at <b>{{post.created_utc | dateAgo}}</b> by {{post.author}} <br/>

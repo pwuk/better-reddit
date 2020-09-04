@@ -1,10 +1,11 @@
 @import "../../../assets/styles/variables";
 
-
 .post-overview {
   display: flex;
-  margin-bottom: $spacing-xl;
+  height: 100%;
   border: 1px solid transparent;
+  cursor: pointer;
+  outline: none;
 
   &:hover {
     border: 1px solid rgb(237, 239, 241);
@@ -13,7 +14,7 @@
   &__score {
     font-size: $font-size-xl;
     font-weight: bold;
-    min-width: 50px;
+    min-width: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,25 +26,40 @@
     margin: 0 $spacing-sm;
 
     img {
-      width: 100%;
-      min-height: 75px;
+      //width: 100%;
+      //min-height: 75px;
+      //object-fit: cover;
+      height: 100%;
+      max-width: 100%;
       object-fit: cover;
     }
   }
 
   &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &-title {
       font-size: $font-size-md;
       font-family: $font-family-secondary;
+      color: #218F76;
 
-      a {
-        text-decoration: none;
+      &:hover {
+        text-decoration: underline;
       }
     }
 
     &-subtitle {
       font-size: $font-size-sm;
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }

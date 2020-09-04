@@ -6,7 +6,6 @@ import { HomeComponent } from './home.component';
 import { PostOverviewComponent } from './post-overview/post-overview.component';
 import { DateAgoPipe } from '../shared/pipes/date-ago.pipe';
 
-
 @NgModule({
     declarations: [
         HomeComponent,
