@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { PostService } from '../shared/services/post.service';
-import { NgxMasonryOptions } from 'ngx-masonry';
 
 @Component({
     selector: 'app-home',
@@ -8,12 +7,6 @@ import { NgxMasonryOptions } from 'ngx-masonry';
     styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-
-    public masonryOptions: NgxMasonryOptions = {
-        gutter: 10,
-        resize: true,
-        fitWidth: true,
-    };
 
     constructor(public postService: PostService) {
     }
