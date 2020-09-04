@@ -14,7 +14,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 
     private $unsubscribe = new Subject();
 
-
     constructor(private route: ActivatedRoute) { }
 
     ngOnInit(): void {

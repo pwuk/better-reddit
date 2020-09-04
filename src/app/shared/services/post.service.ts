@@ -83,9 +83,10 @@ export class PostService implements OnDestroy {
         if (!subreddit.startsWith('r/')) {
             subreddit = 'r/' + subreddit;
         }
+
         const limitParam = 'limit=' + limit + '&count=' + limit;
-        const afterParam = after ? '&after=' + after : '';
-        const beforeParam = before ? '&before=' + before : '';
+        const afterParam = this.tmpAfter && after ? '&after=' + after : '';
+        const beforeParam = this.tmpBefore && before ? '&before=' + before : '';
 
         return this.http.get<any>(REDDIT_API + subreddit + '.json?' + limitParam + afterParam + beforeParam)
                    .pipe(
