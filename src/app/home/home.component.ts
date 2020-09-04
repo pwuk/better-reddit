@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { PostService } from '../shared/services/post.service';
 import { NgxMasonryOptions } from 'ngx-masonry';
 
@@ -7,7 +7,7 @@ import { NgxMasonryOptions } from 'ngx-masonry';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent {
 
     public masonryOptions: NgxMasonryOptions = {
         gutter: 10,
@@ -15,16 +15,7 @@ export class HomeComponent implements AfterViewInit {
         fitWidth: true,
     };
 
-    // @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent;
-
     constructor(public postService: PostService) {
-
-    }
-
-    ngAfterViewInit(): void {
-        this.postService.posts$.subscribe(() => {
-
-        });
     }
 
     prevPage(): void {
@@ -34,5 +25,4 @@ export class HomeComponent implements AfterViewInit {
     nextPage(): void {
         this.postService.nextPage();
     }
-
 }
