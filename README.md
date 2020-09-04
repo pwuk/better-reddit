@@ -12,10 +12,11 @@ This web app clones the basic behaviour of Reddit with a new interface. It is de
 
 
 This project:
-- was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
-- uses [TravisCI](https://travis-ci.com/github/drdreo/better-reddit) for CI 
-- uses [Heroku](https://better-reddit.herokuapp.com/) as hosting service
+- was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0 🅰️
+- uses [TravisCI](https://travis-ci.com/github/drdreo/better-reddit) for CI 🧪
+- uses [Heroku](https://better-reddit.herokuapp.com/) as hosting service 🖥️
 - uses [Cypress](https://www.cypress.io/) for E2E tests because it's best 💜
+- heavily abuses the power of rxjs Observables. Make data observable 🧐
 
 ## Development server
 
