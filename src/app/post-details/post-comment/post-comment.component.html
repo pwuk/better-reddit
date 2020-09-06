@@ -3,8 +3,11 @@
         <span class="comment__header-author">{{comment.data.author}}</span> {{comment.data.score}} points
         | {{comment.data.created_utc | dateAgo}}
     </div>
-    <div class="comment__content" [innerHTML]="getFormattedSelfText(comment.data.body)">
-    </div>
+<!--    <div class="comment__content" [innerHTML]="getFormattedSelfText(comment.data.body)">-->
+<!--    </div>-->
+    <ngx-md class="comment__content">
+        {{comment.data.body}}
+    </ngx-md>
     <div class="comment__replies" *ngIf="comment.data.replies">
         <app-post-comment class="nested-reply"
                           *ngFor="let com of comment.data.replies.data.children; let i = index;"
