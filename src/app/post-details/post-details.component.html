@@ -1,5 +1,8 @@
 <div class="container">
-    <a routerLink=""> < Back</a>
+    <a routerLink="" class="back-button">🡐 Back</a>
+    <ng-container *ngIf="postService.loading$| async">
+        <app-spinner></app-spinner>
+    </ng-container>
     <ng-container *ngIf="postDetails$ | async as details">
         <div class="post">
             <div class="post__header">
@@ -17,8 +20,11 @@
 
             </div>
             <div class="post__content">
-                <p *ngIf="details.post.selftext; else imagePost"
-                   [innerHTML]="getFormattedSelfText(details.post.selftext)"></p>
+                <ngx-md *ngIf="details.post.selftext; else imagePost">
+                    {{details.post.selftext}}
+                </ngx-md>
+                <!--                <p *ngIf="details.post.selftext; else imagePost"-->
+                <!--                   [innerHTML]="getFormattedSelfText(details.post.selftext)"></p>-->
                 <ng-template #imagePost>
                     <img [src]="details.post.url" alt="Post Details"/>
                 </ng-template>

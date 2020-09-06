@@ -1,21 +1,5 @@
 @import "../../assets/styles/variables";
 
-.loading {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #ffffffb3;
-
-  p {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -63,4 +47,23 @@
 
 .message {
   text-align: center;
+}
+
+.pagination-button {
+  border: none;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  color: black;
+  display: inline-block;
+  padding: 8px 16px;
+  cursor: pointer;
+
+  &:first-child {
+    margin-right: $spacing-sm;
+  }
+
+  &:hover {
+    background-color: #ddd;
+    color: black;
+  }
 }

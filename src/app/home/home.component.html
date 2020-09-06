@@ -2,9 +2,7 @@
     <app-header></app-header>
 
     <ng-container *ngIf="postService.loading$| async">
-        <div class="loading">
-            <p>Loading....</p>
-        </div>
+        <app-spinner></app-spinner>
     </ng-container>
 
     <ng-template #noResults>
@@ -23,9 +21,9 @@
         </div>
 
         <div class="page-controls">
-            <button (click)="prevPage();">< Prev</button>
-            |
-            <button (click)="nextPage();">Next ></button>
+            <button (click)="prevPage();" class="pagination-button"><</button>
+
+            <button (click)="nextPage();" class="pagination-button">></button>
         </div>
     </ng-container>
 </div>

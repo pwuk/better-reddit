@@ -49,3 +49,14 @@
     }
   }
 }
+
+.back-button {
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: transparentize(#f3f3f3, 0.33);
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
+}

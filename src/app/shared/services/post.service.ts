@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, takeUntil, tap } from 'rxjs/operators';
 import { FormattedPost, PostDetails } from './PostDetails';
@@ -82,7 +82,7 @@ export class PostService implements OnDestroy {
         this._before$.next(this.tmpBefore);
     }
 
-    fetchSubPosts(subreddit: string, limit: number, after?: string, before?: string): Promise<any> {
+    fetchSubPosts(subreddit: string, limit: number, after?: string, before?: string): Promise<any[]> {
         this._loading$.next(true);
         // format sub query
         if (!subreddit.startsWith('r/')) {
@@ -108,17 +108,23 @@ export class PostService implements OnDestroy {
                        map(res => res.data.children),
                        catchError((err, caught) => {
                            this._loading$.next(false);
-                           return [];
+                           return of([]);
                        }))
                    .toPromise();
     }
 
-    fetchPost(id: string): Observable<FormattedPost> {
+    fetchPost(id: string): Observable<FormattedPost | null> {
+        this._loading$.next(true);
+
         return this.http.get<PostDetails>(REDDIT_API + 'comments/' + id + '.json?')
                    .pipe(
+                       tap(() => this._loading$.next(false)),
                        map(res => {
                            return {post: res[0].data.children[0].data, comments: res[1].data.children};
-                       })
-                       , tap(console.log));
+                       }),
+                       catchError((err, caught) => {
+                           this._loading$.next(false);
+                           return of(null);
+                       }));
     }
 }
