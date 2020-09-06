@@ -31,7 +31,7 @@
             </div>
 
             <div class="post__comments">
-                <app-post-comment *ngFor="let comment of details.comments" [comment]="comment"></app-post-comment>
+                <app-post-comment *ngFor="let comment of details.comments; trackBy: trackById" [comment]="comment"></app-post-comment>
             </div>
         </div>
     </ng-container>

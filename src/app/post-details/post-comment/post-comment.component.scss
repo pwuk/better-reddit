@@ -17,10 +17,12 @@
   padding-left: $spacing-sm;
   border-left: 2px solid lightgray;
 
+
   &__header {
     color: gray;
     font-size: $font-size-sm;
     margin-bottom: 4px;
+    cursor: pointer;
 
     &-author {
       color: initial;
@@ -29,5 +31,16 @@
 
   &__content {
     font-size: $font-size-sm + 2px;
+  }
+}
+
+
+.show-more {
+  font-size: $font-size-sm;
+  cursor: pointer;
+  color: gray;
+
+  &:hover {
+    color: initial;
   }
 }

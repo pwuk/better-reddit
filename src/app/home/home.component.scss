@@ -57,6 +57,7 @@
   display: inline-block;
   padding: 8px 16px;
   cursor: pointer;
+  outline: none;
 
   &:first-child {
     margin-right: $spacing-sm;

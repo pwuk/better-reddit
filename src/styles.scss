@@ -7,6 +7,9 @@
 // minor reset
 html {
   box-sizing: border-box;
+  height: 100%;
+  display: block;
+  position: relative;
 }
 
 *, *:before, *:after {
@@ -16,5 +19,8 @@ html {
 body {
   font-family: 'Crimson Pro', serif;
   font-size: 1.25rem;
-  position: relative
+  position: relative;
+  height: 100%;
+  display: block;
+  position: relative;
 }

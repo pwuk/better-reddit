@@ -1,9 +1,7 @@
 <div class="container">
     <app-header></app-header>
 
-    <ng-container *ngIf="postService.loading$| async">
-        <app-spinner></app-spinner>
-    </ng-container>
+    <app-spinner *ngIf="postService.loading$| async"></app-spinner>
 
     <ng-template #noResults>
         <p class="message">
@@ -16,8 +14,9 @@
         Current Page: {{postService.currentPage}}
 
         <div class="masonry">
-            <app-post-overview *ngFor="let post of posts;" [post]="post.data"
-                               class="masonry-brick"></app-post-overview>
+            <app-post-overview *ngFor="let post of posts;trackBy: trackById"
+                               class="masonry-brick"
+                               [post]="post.data"></app-post-overview>
         </div>
 
         <div class="page-controls">

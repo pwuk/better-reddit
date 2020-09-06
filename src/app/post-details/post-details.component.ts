@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { PostService } from '../shared/services/post.service';
-import { FormattedPost } from '../shared/services/PostDetails';
+import { FormattedPost } from './PostDetails';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { urlify } from '../utils';
 
@@ -11,6 +11,7 @@ import { urlify } from '../utils';
     selector: 'app-post-details',
     templateUrl: './post-details.component.html',
     styleUrls: ['./post-details.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
 

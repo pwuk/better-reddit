@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, takeUntil, tap } from 'rxjs/operators';
-import { FormattedPost, PostDetails } from './PostDetails';
+import { FormattedPost, PostDetails } from '../../post-details/PostDetails';
 
 const REDDIT_API = 'https://www.reddit.com/';
 
@@ -10,6 +10,9 @@ const REDDIT_API = 'https://www.reddit.com/';
     providedIn: 'root',
 })
 export class PostService implements OnDestroy {
+
+    currentPage = 1;
+
     private tmpAfter: string;
     private tmpBefore: string;
 
@@ -39,8 +42,6 @@ export class PostService implements OnDestroy {
     private _after$ = new BehaviorSubject('');
     private _before$ = new BehaviorSubject('');
 
-    currentPage = 1;
-
     private _posts$ = new BehaviorSubject([]);
     posts$ = this._posts$.asObservable();
 
@@ -50,8 +51,7 @@ export class PostService implements OnDestroy {
     private unsubscribe$ = new Subject();
 
     constructor(private http: HttpClient) {
-
-        // if our query OR limit changes, fetch new posts
+        // if the sub query, limit or pagination changes, fetch new posts
         combineLatest([this._query$, this._limit$, this._after$, this._before$])
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(([query, limit, after, before]) => {

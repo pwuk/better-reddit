@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 export interface Post {
     id: string;
@@ -15,14 +15,15 @@ export interface Post {
     selector: 'app-post-overview',
     templateUrl: './post-overview.component.html',
     styleUrls: ['./post-overview.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PostOverviewComponent implements OnInit {
+export class PostOverviewComponent {
 
     @Input() post: Post;
 
     constructor() { }
 
-    ngOnInit(): void {
+    trackById(index, item): string {
+        return item.id;
     }
-
 }

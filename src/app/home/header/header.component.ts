@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounce, takeUntil } from 'rxjs/operators';
 import { interval, Subject } from 'rxjs';
@@ -8,6 +8,7 @@ import { PostService } from '../../shared/services/post.service';
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
@@ -31,7 +32,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.limit.valueChanges
             .pipe(takeUntil(this.unsubscribe$))
             .subscribe(val => {
-                console.log(val);
                 this.postService.limit = val;
             });
     }
