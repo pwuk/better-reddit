@@ -6,7 +6,7 @@
 
 :host(.nested-reply) {
   .comment {
-    margin: $spacing-sm 0;
+    margin: $spacing-md 0;
     border: none;
     padding-left: 0;
   }
@@ -18,8 +18,9 @@
   border-left: 2px solid lightgray;
 
   &__header {
-    font-size: $font-size-sm;
     color: gray;
+    font-size: $font-size-sm;
+    margin-bottom: 4px;
 
     &-author {
       color: initial;
@@ -27,6 +28,6 @@
   }
 
   &__content {
-    font-size: $font-size-md;
+    font-size: $font-size-sm + 2px;
   }
 }
