@@ -163,6 +163,19 @@ export interface PostChild {
     data: PostData;
 }
 
+export interface PostComment {
+    kind: string;
+    data: {
+        body_html: string;
+        author_flair_richtext: any[];
+        saved: boolean;
+        controversiality: number;
+        body: string;
+        total_awards_received: number;
+        link_id: string; subreddit_id: string; subreddit: string; score: number; mod_reason_title?: string; is_submitter: boolean; can_gild: boolean; id: string; author_premium: boolean; locked: boolean; created_utc: number; likes?: string; banned_at_utc?: string; downs: number; edited: boolean; author: string; created: number; treatment_tags: any[]; author_flair_background_color?: string; report_reasons?: string; gildings: {}; approved_by?: string; score_hidden: boolean; replies: any; subreddit_name_prefixed: string; mod_reason_by?: string; parent_id: string; top_awarded_type?: string; approved_at_utc?: string; no_follow: boolean; name: string; ups: number; awarders: any[]; author_flair_type: string; permalink: string; author_flair_css_class?: string; num_reports?: string; mod_reports: any[]; gilded: number; author_patreon_flair: boolean; collapsed: boolean; collapsed_reason?: string; removal_reason?: string; mod_note?: string; send_replies: boolean; author_flair_text?: string; archived: boolean; author_flair_text_color?: string; can_mod_post: boolean; author_fullname: string; subreddit_type: string; user_reports: any[]; associated_award?: string; distinguished?: string; author_flair_template_id?: string; depth: number; stickied: boolean; all_awardings: any[]; collapsed_because_crowd_control?: string; banned_by?: string
+    };
+}
+
 export interface Data {
     modhash: string;
     dist?: number;

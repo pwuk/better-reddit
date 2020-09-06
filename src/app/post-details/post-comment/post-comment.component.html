@@ -7,8 +7,8 @@
     </div>
     <div class="comment__replies" *ngIf="comment.data.replies">
         <app-post-comment class="nested-reply"
-                          *ngFor="let comment of comment.data.replies.data.children; let i = index;"
+                          *ngFor="let com of comment.data.replies.data.children; let i = index;"
                           [count]="i+1"
-                          [comment]="comment"></app-post-comment>
+                          [comment]="com"></app-post-comment>
     </div>
 </div>

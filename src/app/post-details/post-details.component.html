@@ -5,7 +5,7 @@
             <div class="post__header">
                 <div class="post__header__details">
                     posted by
-                    <b class="post__header__details-author">{{details.post.author}}</b>
+                    <span class="post__header__details-author">{{details.post.author}}</span>
                     {{details.post.created_utc | dateAgo}}
                     in
                     <a [href]="'https://reddit.com/' + details.post.subreddit_name_prefixed"

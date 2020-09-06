@@ -115,8 +115,10 @@ export class PostService implements OnDestroy {
 
     fetchPost(id: string): Observable<FormattedPost> {
         return this.http.get<PostDetails>(REDDIT_API + 'comments/' + id + '.json?')
-                   .pipe(map(res => {
-                       return {post: res[0].data.children[0].data, comments: res[1].data.children};
-                   }), tap(console.log));
+                   .pipe(
+                       map(res => {
+                           return {post: res[0].data.children[0].data, comments: res[1].data.children};
+                       })
+                       , tap(console.log));
     }
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PostChild } from '../../shared/services/PostDetails';
+import { PostChild, PostComment } from '../../shared/services/PostDetails';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { urlify } from '../../utils';
 
@@ -10,8 +10,8 @@ import { urlify } from '../../utils';
 })
 export class PostCommentComponent {
 
-    @Input() comment: PostChild;
-    @Input() count: number;
+    @Input() comment: PostComment;
+    @Input() count?: number;
 
     constructor(private sanitizer: DomSanitizer) { }
 

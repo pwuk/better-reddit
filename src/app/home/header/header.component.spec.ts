@@ -2,8 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { HeaderComponent } from './header.component';
-import { PostService } from '../../services/post.service';
-import { PostServiceMock } from '../../../test/post.service.mock';
+import { PostService } from '../../shared/services/post.service';
+import { PostServiceMock } from '../../test/post.service.mock';
+
 
 describe('HeaderComponent', () => {
     let component: HeaderComponent;

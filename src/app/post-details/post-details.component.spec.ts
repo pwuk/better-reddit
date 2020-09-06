@@ -4,6 +4,9 @@ import { of } from 'rxjs';
 
 import { PostDetailsComponent } from './post-details.component';
 import { mockPost } from '../test/MockPost';
+import { PostService } from '../shared/services/post.service';
+import { PostServiceMock } from '../test/post.service.mock';
+import { DateAgoPipe } from '../shared/pipes/date-ago.pipe';
 
 describe('PostDetailsComponent', () => {
     let component: PostDetailsComponent;
@@ -11,13 +14,15 @@ describe('PostDetailsComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [PostDetailsComponent],
-            providers: [{
-                provide: ActivatedRoute,
-                useValue: {
-                    paramMap: of({get: (key) => mockPost.id}),
+            declarations: [PostDetailsComponent, DateAgoPipe],
+            providers: [
+                {
+                    provide: ActivatedRoute,
+                    useValue: {
+                        paramMap: of({get: (key) => mockPost.id}),
+                    },
                 },
-            }],
+                {provide: PostService, useClass: PostServiceMock}],
         }).compileComponents();
     });
 
