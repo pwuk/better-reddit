@@ -1,7 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, takeUntil, tap } from 'rxjs/operators';
+import { FormattedPost, PostDetails } from './PostDetails';
 
 const REDDIT_API = 'https://www.reddit.com/';
 
@@ -110,5 +111,12 @@ export class PostService implements OnDestroy {
                            return [];
                        }))
                    .toPromise();
+    }
+
+    fetchPost(id: string): Observable<FormattedPost> {
+        return this.http.get<PostDetails>(REDDIT_API + 'comments/' + id + '.json?')
+                   .pipe(map(res => {
+                       return {post: res[0].data.children[0].data, comments: res[1].data.children};
+                   }), tap(console.log));
     }
 }

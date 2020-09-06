@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounce, takeUntil } from 'rxjs/operators';
 import { interval, Subject } from 'rxjs';
-import { PostService } from '../../services/post.service';
+import { PostService } from '../../shared/services/post.service';
 
 @Component({
     selector: 'app-header',

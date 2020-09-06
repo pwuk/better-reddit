@@ -1,0 +1,14 @@
+<div class="comment" [style.margin-left.px]="count * 10">
+    <div class="comment__header">
+        <span class="comment__header-author">{{comment.data.author}}</span> {{comment.data.score}} points
+        | {{comment.data.created_utc | dateAgo}}
+    </div>
+    <div class="comment__content" [innerHTML]="getFormattedSelfText(comment.data.body)">
+    </div>
+    <div class="comment__replies" *ngIf="comment.data.replies">
+        <app-post-comment class="nested-reply"
+                          *ngFor="let comment of comment.data.replies.data.children; let i = index;"
+                          [count]="i+1"
+                          [comment]="comment"></app-post-comment>
+    </div>
+</div>

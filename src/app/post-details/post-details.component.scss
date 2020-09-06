@@ -1,0 +1,50 @@
+@import "../../assets/styles/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-xl;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include respond-to(tablet) {
+    width: 50%;
+  }
+
+  @include respond-to(desktop) {
+    width: 35%;
+  }
+
+  &__header {
+    &__details {
+      font-size: $font-size-sm;
+
+      &-author {
+        color: #daa520;
+      }
+    }
+
+    &__title {
+      font-family: $font-family-secondary;
+      color: $primary-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__content {
+    padding: $spacing-md;
+
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,3 +1,32 @@
-<div>
-    ID: {{id}}
+<div class="container">
+    <a routerLink=""> < Back</a>
+    <ng-container *ngIf="postDetails$ | async as details">
+        <div class="post">
+            <div class="post__header">
+                <div class="post__header__details">
+                    posted by
+                    <b class="post__header__details-author">{{details.post.author}}</b>
+                    {{details.post.created_utc | dateAgo}}
+                    in
+                    <a [href]="'https://reddit.com/' + details.post.subreddit_name_prefixed"
+                       target="_blank">{{details.post.subreddit_name_prefixed}}</a>
+                </div>
+                <a [href]="'https://reddit.com' + details.post.permalink"
+                   target="_blank"
+                   class="post__header__title">{{details.post.title}}</a>
+
+            </div>
+            <div class="post__content">
+                <p *ngIf="details.post.selftext; else imagePost"
+                   [innerHTML]="getFormattedSelfText(details.post.selftext)"></p>
+                <ng-template #imagePost>
+                    <img [src]="details.post.url" alt="Post Details"/>
+                </ng-template>
+            </div>
+
+            <div class="post__comments">
+                <app-post-comment *ngFor="let comment of details.comments" [comment]="comment"></app-post-comment>
+            </div>
+        </div>
+    </ng-container>
 </div>

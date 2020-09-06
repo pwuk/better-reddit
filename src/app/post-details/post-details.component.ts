@@ -1,7 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { PostService } from '../shared/services/post.service';
+import { FormattedPost } from '../shared/services/PostDetails';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { urlify } from '../utils';
 
 @Component({
     selector: 'app-post-details',
@@ -11,10 +15,12 @@ import { Subject } from 'rxjs';
 export class PostDetailsComponent implements OnInit, OnDestroy {
 
     id: string;
+    postDetails$: Observable<FormattedPost>;
 
     private $unsubscribe = new Subject();
 
-    constructor(private route: ActivatedRoute) { }
+
+    constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer, private postService: PostService) { }
 
     ngOnInit(): void {
         this.route.paramMap
@@ -22,6 +28,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
             .subscribe(params => {
                 this.id = params.get('id');
                 // dispatch action to load the details here.
+                this.postDetails$ = this.postService.fetchPost(this.id);
             });
     }
 
@@ -30,4 +37,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
         this.$unsubscribe.complete();
     }
 
+    getFormattedSelfText(text): SafeHtml {
+        return this.sanitizer.bypassSecurityTrustHtml(urlify(text));
+    }
 }
