@@ -8,7 +8,9 @@ Image by <a href="https://pixabay.com/users/josephvm-289221/?utm_source=link-att
 
 [![Build Status](https://travis-ci.com/drdreo/better-reddit.svg?branch=master)](https://travis-ci.com/drdreo/better-reddit)
 
-This web app clones the basic behaviour of Reddit with a new interface. It is deployed on at https://better-reddit.herokuapp.com/.
+This web app clones the basic reader behaviour of Reddit with a new interface. It's purpose is to showcase my development experience for a coding assessment.
+
+It is deployed on at https://better-reddit.herokuapp.com/.
 
 
 
