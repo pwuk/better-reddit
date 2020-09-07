@@ -11,9 +11,10 @@ addons:
 cache:
   directories:
     - ./node_modules
+    - ~/.cache
 
 install:
-  - npm install
+  - npm ci
 
 script:
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessCI
