@@ -4,8 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { PostService } from '../shared/services/post.service';
 import { FormattedPost } from './PostDetails';
-import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
-import { urlify } from '../utils';
+import { DomSanitizer, SafeResourceUrl, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-post-details',
@@ -17,6 +16,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 
     id: string;
     postDetails$: Observable<FormattedPost>;
+    sanitizedUrl: SafeResourceUrl;
 
     private $unsubscribe = new Subject();
 
@@ -38,7 +38,16 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
         this.$unsubscribe.complete();
     }
 
-    getFormattedSelfText(text): SafeHtml {
-        return this.sanitizer.bypassSecurityTrustHtml(urlify(text));
+    trackById(index, item): string {
+        return item.id;
+    }
+
+    isYouTubeUrl(url: string, mediaUrl: string): boolean {
+        const reg = new RegExp('^(http(s)?:\\/\\/)?((w){3}.)?youtu(be|.be)?(\\.com)?\\/.+');
+        const isYouTube = reg.test(url);
+        if (isYouTube) {
+            this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(mediaUrl);
+        }
+        return isYouTube;
     }
 }

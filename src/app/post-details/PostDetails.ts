@@ -2,6 +2,7 @@ export interface MediaEmbed {
 }
 
 export interface SecureMediaEmbed {
+    media_domain_url: string;
 }
 
 export interface Gildings {

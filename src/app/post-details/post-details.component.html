@@ -20,18 +20,32 @@
 
             </div>
             <div class="post__content">
-                <ngx-md *ngIf="details.post.selftext; else imagePost">
+                <ngx-md *ngIf="details.post.selftext; else mediaPost">
                     {{details.post.selftext}}
                 </ngx-md>
                 <!--                <p *ngIf="details.post.selftext; else imagePost"-->
                 <!--                   [innerHTML]="getFormattedSelfText(details.post.selftext)"></p>-->
-                <ng-template #imagePost>
-                    <img [src]="details.post.url" alt="Post Details"/>
+                <ng-template #mediaPost>
+                    <video *ngIf="details.post.is_video; else youtubeMedia" controls>
+                        <source [src]="details.post.media['reddit_video']['fallback_url']">
+                        Your browser does not support HTML video.
+                    </video>
+                    <ng-template #youtubeMedia>
+                        <iframe *ngIf="isYouTubeUrl(details.post.url, details.post.secure_media_embed.media_domain_url); else imagePost"
+                                [src]="sanitizedUrl"
+                                width="640" height="360"
+                                frameborder="0"></iframe>
+                        <ng-template #imagePost>
+                            <img [src]="details.post.url" alt="Post Details"/>
+                        </ng-template>
+                    </ng-template>
+
                 </ng-template>
             </div>
 
             <div class="post__comments">
-                <app-post-comment *ngFor="let comment of details.comments; trackBy: trackById" [comment]="comment"></app-post-comment>
+                <app-post-comment *ngFor="let comment of details.comments; trackBy: trackById"
+                                  [comment]="comment"></app-post-comment>
             </div>
         </div>
     </ng-container>
