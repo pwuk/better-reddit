@@ -40,5 +40,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
     }
-
 }

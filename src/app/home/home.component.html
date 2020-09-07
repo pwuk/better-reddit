@@ -15,8 +15,8 @@
 
         <div class="masonry">
             <app-post-overview *ngFor="let post of posts;trackBy: trackById"
-                               class="masonry-brick"
-                               [post]="post.data"></app-post-overview>
+                               [post]="post.data"
+                               class="masonry-brick"></app-post-overview>
         </div>
 
         <div class="page-controls">

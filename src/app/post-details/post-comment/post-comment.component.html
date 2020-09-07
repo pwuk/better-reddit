@@ -1,4 +1,4 @@
-<div class="comment" [style.margin-left.px]="count * 10" >
+<div class="comment" [style.margin-left.px]="count * 10">
     <div class="comment__header" (click)="toggleReplies()">
         <span class="comment__header-author">{{comment.data.author}}</span> {{comment.data.score}} points
         | {{comment.data.created_utc | dateAgo}}
@@ -6,7 +6,8 @@
     <ngx-md class="comment__content">
         {{comment.data.body}}
     </ngx-md>
-    <span class="show-more" [hidden]="showReplies || !comment.data.replies" (click)="showReplies = true;">Show more...</span>
+    <span class="show-more" [hidden]="showReplies || !comment.data.replies"
+          (click)="showReplies = true;">Show more...</span>
     <div class="comment__replies" *ngIf="comment.data.replies" [hidden]="!showReplies">
         <app-post-comment class="nested-reply"
                           *ngFor="let com of comment.data.replies.data.children; let i = index; trackBy: trackById"
