@@ -17,12 +17,15 @@
   padding-left: $spacing-sm;
   border-left: 2px solid lightgray;
 
-
   &__header {
     color: gray;
     font-size: $font-size-sm;
     margin-bottom: 4px;
     cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     &-author {
       color: initial;

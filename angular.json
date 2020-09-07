@@ -121,6 +121,30 @@
               "devServerTarget": "betterReddit:serve:production"
             }
           }
+        },
+        "cypress-run": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "betterReddit:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "betterReddit:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "betterReddit:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "betterReddit:serve:production"
+            }
+          }
         }
       }
     }

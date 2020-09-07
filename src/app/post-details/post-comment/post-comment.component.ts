@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { PostComment } from '../PostDetails';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { urlify } from '../../utils';
 
 @Component({
     selector: 'app-post-comment',
@@ -16,13 +14,13 @@ export class PostCommentComponent {
 
     showReplies = true;
 
-    constructor(private sanitizer: DomSanitizer) { }
-
-    getFormattedSelfText(text): SafeHtml {
-        return this.sanitizer.bypassSecurityTrustHtml(urlify(text));
-    }
+    constructor() { }
 
     toggleReplies(): void {
         this.showReplies = !this.showReplies;
+    }
+
+    trackById(index, item): string {
+        return item.id;
     }
 }

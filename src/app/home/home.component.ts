@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PostService } from '../shared/services/post.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-home',
@@ -7,9 +8,13 @@ import { PostService } from '../shared/services/post.service';
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-    constructor(public postService: PostService) {
+    constructor(private title: Title, public postService: PostService) {
+    }
+
+    ngOnInit(): void {
+        this.title.setTitle('Discover Great Subs | BetterReddit');
     }
 
     prevPage(): void {

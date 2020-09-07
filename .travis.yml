@@ -7,14 +7,14 @@ node_js:
 
 addons:
   chrome: stable
-      
+
 cache:
   directories:
     - ./node_modules
-    
+
 install:
   - npm install
-  
+
 script:
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessCI
-
+  - npm run cy:ci
