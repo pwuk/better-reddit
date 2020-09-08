@@ -10,7 +10,7 @@
             {{post.title}}
         </div>
         <div class="post-overview__description-subtitle">
-            submitted at <b>{{post.created_utc | dateAgo}}</b> by {{post.author}} <br/>
+            submitted <b>{{post.created_utc | dateAgo}}</b> by {{post.author}} <br/>
             <a [routerLink]="['post', post.id]">{{post.num_comments}} comments</a>
         </div>
     </div>
