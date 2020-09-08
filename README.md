@@ -21,6 +21,13 @@ This project:
 - uses [Cypress](https://www.cypress.io/) for E2E tests because it's best 💜
 - heavily abuses the power of rxjs Observables. Make data observable 🧐
 
+
+Further Improvements:
+- use of Akita as state management
+- better test coverage
+- extract SCSS variables to CSS custom properties
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
